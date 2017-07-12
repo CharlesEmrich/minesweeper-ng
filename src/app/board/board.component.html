@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="board" [style.width.px]="126 * childBoard.width">
+    <div class="square" *ngFor="let square of childBoard.squares">
+      <p>{{square.x}}</p>
+      <p>{{square.y}}</p>
+      <p>{{square.bomb}}</p>
+    </div>
+  </div>
+</div>
