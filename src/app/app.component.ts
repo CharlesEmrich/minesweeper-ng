@@ -14,7 +14,7 @@ export class AppComponent {
 
     for (var i = 0; i < this.masterBoard.height; i++) {
       for (var ii = 0; ii < this.masterBoard.width; ii++) {
-        this.masterBoard.squares.push(new Square(ii, i));
+        this.masterBoard.squares.push(new Square(ii + 1, i + 1));
       }
     }
 
@@ -32,6 +32,8 @@ export class AppComponent {
         currentBombs ++;
       }
     }
+
+    this.masterBoard.squares.forEach((square) => { this.masterBoard.populateAdjacents(square)});
     console.log(this.masterBoard);
   }
 }

@@ -15,4 +15,12 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
   }
 
+  clickSquare(square: Square) {
+    console.log(square);
+  }
+
+  markBomb(square: Square): boolean {
+    console.log(square);
+    return false;
+  }
 }
