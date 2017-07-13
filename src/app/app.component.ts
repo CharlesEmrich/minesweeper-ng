@@ -18,6 +18,7 @@ export class AppComponent {
       }
     }
 
+    //NOTE: SOMETHING IS WRONG WITH THIS AND IT DOESN'T MAKE ENOUGH BOMBS
     var currentBombs = 0;
     while(this.masterBoard.bombs > currentBombs) {
       var xCoord = Math.floor(Math.random() * (this.masterBoard.width - 1));

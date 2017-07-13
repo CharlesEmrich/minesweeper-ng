@@ -12,17 +12,19 @@ export class Board {
                                   [square.x - 1, square.y - 1],
                                   [square.x - 1, square.y + 1],
                                   [square.x + 1, square.y + 1],
-                                  [square.x + 1, square.y - 1]]
-                                  .filter((arr) => {
-                                    return arr[0] > 0 && arr[1] > 0
-                                        && arr[0] <= this.width
-                                        && arr[1] <= this.height;
-                                  });
+                                  [square.x + 1, square.y - 1]];
+                                  // .filter((arr) => {
+                                  //   return arr[0] > 0 && arr[1] > 0
+                                  //       && arr[0] <= this.width
+                                  //       && arr[1] <= this.height;
+                                  // });
+    console.log(possibleAdjacentCoords);
     square.adjacents = this.squares.filter((currSquare) => {
       possibleAdjacentCoords.forEach((coordPair) => {
         return currSquare.x === coordPair[0] && currSquare.y === coordPair[1];
       });
     });
+    console.log(square.adjacents)
   }
 }
 
