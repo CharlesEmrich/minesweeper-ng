@@ -1,31 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 60px;
+}
+
 .board {
   display: flex;
   flex-wrap: wrap;
-  /*width: 1260px;*/
   height: 100%;
+  border: 16px solid #535B5E;
+  background-color: #535B5E;
+  border-radius: 28px;
 }
 
 .square {
-  text-align: center;
-  display: inline-block;
-  width: 120px;
-  height: 120px;
-  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #535B5E;
+  background-color: #313638;
+  border-radius: 50%;
+
+  font-family: 'Oxygen Mono', monospace;
+  font-size: 25px;
+
+  transition: all 0.4s ease-in-out;
 }
 
+/*.square:hover {
+  background-color: #646E72;
+}*/
+
 .flagged {
-  background-color: darkgreen;
+  background-color: #4F94AF;
   color: white;
 }
 
 .clicked {
-  background-color: lightgrey;
+  background-color: #E8E9EB;
 }
 
 .otherBombed {
-  background-color: lightblue;
+  background-color: #E4B363;
 }
 
 .lethal {
-  background-color: red;
+  background-color: #EF6461;
 }

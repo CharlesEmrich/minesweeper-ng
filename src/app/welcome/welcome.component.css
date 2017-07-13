@@ -1,0 +1,48 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 8px;
+  background-color: #4F94AF;
+
+  font-family: 'Oxygen Mono', monospace;
+  font-size: 20px;
+  color: #E8E9EA;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu input {
+  padding: 4px;
+  text-align: center;
+
+  border-radius: 8px;
+  padding-left: 15px;
+  height: 20px;
+  width: 60px;
+  padding-bottom: 3px;
+  font-family: 'Oxygen Mono', monospace;
+  font-size: 15px;
+}
+
+.button-like {
+  width: 100%;
+  padding: 8px;
+  background-color: #4F94AF;
+  cursor: pointer;
+
+  text-align: center;
+  font-family: 'Oxygen Mono', monospace;
+  font-size: 35px;
+  color: #E8E9EA;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-like:hover {
+  background-color: #89CBE5;
+  color: #494946;
+}
