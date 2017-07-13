@@ -17,3 +17,7 @@
   background-color: darkgreen;
   color: white;
 }
+
+.clicked {
+  background-color: lightgrey;
+}

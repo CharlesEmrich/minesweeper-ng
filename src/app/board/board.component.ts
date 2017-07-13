@@ -16,19 +16,39 @@ export class BoardComponent implements OnInit {
   }
 
   clickSquare(square: Square) {
-    if(!square.flag) {
-      console.log(square);
+    if(!square.flagged) {
+      //Lose game if bombed
+      if(square.bombed) {
+        //NOTE: Call a gameLoss function which reveals all bombs, highlights your losing square, and turns off clicking forever and always amen.
+        console.error('You lost the game.');
+      } else {
+        //Display adjacentBombs and change style (bg)
+        square.clicked = true;
+        //Cascade left click into empty squares.
+        if(square.adjacentBombs === 0) {
+          square.adjacents.forEach((adjSquare) => {
+            if(!adjSquare.clicked) {
+              this.clickSquare(adjSquare);
+            }
+          });
+        }
+        //Check for Win
+        console.log(this.childBoard.checkForWin());
+        this.childBoard.checkForWin();
+      }
+      // console.log(square);
     }
   }
 
   markBomb(square: Square): boolean {
-    //Mark Guess
-    square.flag = !square.flag;
-
-    //Check for Win
-    console.log(this.childBoard.checkForWin());
-    this.childBoard.checkForWin();
-    // console.log(square);
+    if(!square.clicked) {
+      //Mark guess
+      square.flagged = !square.flagged;
+      //Check for Win
+      console.log(this.childBoard.checkForWin());
+      this.childBoard.checkForWin();
+      // console.log(square);
+    }
     return false;
   }
 }

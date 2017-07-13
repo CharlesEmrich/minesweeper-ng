@@ -1,8 +1,8 @@
 <div class="container">
   <div class="board" [style.width.px]="126 * childBoard.width">
-    <div class="square" [ngClass]="{ 'flagged': square.flag }" *ngFor="let square of childBoard.squares" (click)="clickSquare(square)" (contextmenu)="markBomb(square)">
-      <p>x: {{square.x}} | y: {{square.y}}</p>
-      <p>{{square.bomb}} | {{square.adjacentBombs}}</p>
+    <div class="square" [ngClass]="{ 'flagged': square.flagged, 'clicked': square.clicked }" *ngFor="let square of childBoard.squares" (click)="clickSquare(square)" (contextmenu)="markBomb(square)">
+      <p *ngIf="square.clicked && !square.bombed && square.adjacentBombs > 0">{{square.adjacentBombs}}</p>
+      <p>{{square.bombed}}</p>
     </div>
   </div>
 </div>

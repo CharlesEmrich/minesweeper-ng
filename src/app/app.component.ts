@@ -32,18 +32,24 @@ export class AppComponent {
         return currentSquare.y === yCoord && currentSquare.x === xCoord;
       });
 
-      if (squareToBomb.bomb === false) {
-        squareToBomb.bomb = true;
+      if (squareToBomb.bombed === false) {
+        squareToBomb.bombed = true;
         //Add newly-bombed square to board's array of bombed squares.
         this.masterBoard.bombedSquares.push(squareToBomb);
         currentBombs ++;
       }
       loopCounter ++;
       if(loopCounter > 10000) {console.log('Oh no.')}
+
     }
 
     //NOTE: Refactor populateAdjacents so that the function loops and the call here doesn't need to.
-    this.masterBoard.squares.forEach((square) => { this.masterBoard.populateAdjacents(square)});
+    this.masterBoard.squares.forEach((square) => {
+      this.masterBoard.populateAdjacents(square);
+      if (!square.bombed) {
+        this.masterBoard.unbombedSquares.push(square);
+      }
+    });
 
     console.log(this.masterBoard);
   }

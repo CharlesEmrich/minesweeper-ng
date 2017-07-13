@@ -1,7 +1,8 @@
 export class Square {
   adjacents: Square[] = [];
   adjacentBombs: number = 0;
-  bomb: boolean = false;
-  flag: boolean = false;
+  bombed: boolean = false;
+  flagged: boolean = false;
+  clicked: boolean = false;
   constructor(public x: number, public y: number) {}
 }

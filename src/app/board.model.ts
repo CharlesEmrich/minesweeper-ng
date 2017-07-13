@@ -3,19 +3,22 @@ import { Square } from './square.model';
 export class Board {
   squares: Square[] = [];
   bombedSquares: Square[] = [];
+  unbombedSquares: Square[] = [];
   constructor(public height: number, public width: number, public bombs: number) {}
 
   //NOTE: Make it so this can run on left clicks and passes if the only unclicked squares are the mines.
   checkForWin() {
-    var allBombsFlagged: boolean = this.bombedSquares.every(square => { return square.flag });
+    var allBombsFlagged: boolean = this.bombedSquares.every(square => { return square.flagged });
 
     var flaggedSquares: number = 0
     this.bombedSquares.forEach(square => {
-      if (square.flag) {
+      if (square.flagged) {
         flaggedSquares ++;
       }
     });
-    return allBombsFlagged && flaggedSquares === this.bombs;
+
+    var allBombsNotClicked: boolean = this.unbombedSquares.every(square => { return square.clicked });
+    return (allBombsFlagged && flaggedSquares === this.bombs) || allBombsNotClicked;
   }
 
   populateAdjacents(square: Square) {
@@ -41,7 +44,7 @@ export class Board {
     });
 
     square.adjacents.forEach((currentSquare) => {
-      if (currentSquare.bomb) {
+      if (currentSquare.bombed) {
         square.adjacentBombs ++;
       }
     });
