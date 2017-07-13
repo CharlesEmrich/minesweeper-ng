@@ -16,11 +16,18 @@ export class BoardComponent implements OnInit {
   }
 
   clickSquare(square: Square) {
-    console.log(square);
+    if(!square.flag) {
+      console.log(square);
+    }
   }
 
   markBomb(square: Square): boolean {
+    //Mark Guess
+    square.flag = !square.flag;
+
     console.log(square);
     return false;
   }
+
+
 }

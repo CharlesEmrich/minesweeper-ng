@@ -31,13 +31,16 @@ export class AppComponent {
 
       if (squareToBomb.bomb === false) {
         squareToBomb.bomb = true;
+        this.masterBoard.bombedSquares.push(squareToBomb);
         currentBombs ++;
       }
       loopCounter ++;
       if(loopCounter > 10000) {console.log('Oh no.')}
     }
 
+    //NOTE: Refactor populateAdjacents so that the function loops and the call here doesn't need to.
     this.masterBoard.squares.forEach((square) => { this.masterBoard.populateAdjacents(square)});
+
     console.log(this.masterBoard);
   }
 }

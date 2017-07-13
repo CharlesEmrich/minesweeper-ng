@@ -12,3 +12,8 @@
   height: 120px;
   border: 3px solid black;
 }
+
+.flagged {
+  background-color: darkgreen;
+  color: white;
+}

@@ -1,7 +1,8 @@
-import {Square} from './square.model';
+import { Square } from './square.model';
 
 export class Board {
   squares: Square[] = [];
+  bombedSquares: Square[] = [];
   constructor(public height: number, public width: number, public bombs: number) {}
 
   populateAdjacents(square: Square) {
@@ -18,7 +19,6 @@ export class Board {
                                         && arr[0] <= this.width
                                         && arr[1] <= this.height;
                                   });
-    // console.log(possibleAdjacentCoords);
     this.squares.forEach((currSquare) => {
       possibleAdjacentCoords.forEach((coordPair) => {
         if(currSquare.x === coordPair[0] && currSquare.y === coordPair[1]) {
@@ -26,6 +26,11 @@ export class Board {
         }
       });
     });
-    console.log(square.adjacents);
+
+    square.adjacents.forEach((currentSquare) => {
+      if (currentSquare.bomb) {
+        square.adjacentBombs ++;
+      }
+    });
   }
 }
