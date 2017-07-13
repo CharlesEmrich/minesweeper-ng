@@ -10,7 +10,6 @@
 .board {
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
   border: 16px solid #535B5E;
   background-color: #535B5E;
   border-radius: 28px;
@@ -28,6 +27,7 @@
 
   font-family: 'Oxygen Mono', monospace;
   font-size: 25px;
+
 
   transition: all 0.4s ease-in-out;
 }
@@ -51,4 +51,8 @@
 
 .lethal {
   background-color: #EF6461;
+}
+
+.flaggedBomb {
+  background-color: #ADE7FF;
 }

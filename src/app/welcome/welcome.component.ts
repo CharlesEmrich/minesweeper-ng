@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-welcome',
@@ -7,13 +7,16 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
   @Output() boardParamSender = new EventEmitter();
+  @Input() childBoardDrawn: boolean;
 
   constructor() { }
 
   ngOnInit() {
   }
-  sendBoard(height: string, width: string, bombs: string) {
-    //NOTE: Implement data validation to prevent infinite loops caused by bombs >= width * height.
+  sendBoard(height: number, width: number, bombs: number) {
+    if (bombs > (height * width)) {
+        bombs = height * width;
+    }
     var objectToEmit = {height: height, width: width, bombs: bombs};
     this.boardParamSender.emit(objectToEmit);
   }

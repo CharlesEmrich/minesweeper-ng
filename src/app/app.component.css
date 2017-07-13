@@ -1,0 +1,58 @@
+app-board {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.move-board {
+  animation-name: move-from-top;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 0;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+@keyframes move-from-top {
+  0% {
+    top: -50%;
+    left: 50%;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+
+/*app-board {
+  position: absolute;
+  top: -200%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.move-board {
+  animation-name: move;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-delay: 0;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+@keyframes move {
+  0% {
+    top: -200%;
+    left: 50%;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}*/

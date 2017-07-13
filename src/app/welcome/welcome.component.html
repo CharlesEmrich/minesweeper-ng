@@ -13,3 +13,9 @@
   </div>
 </div>
 <div class="button-like" (click)="sendBoard(height.value, width.value, bombs.value)">PLAY</div>
+
+<div class="welcome container" [ngClass]="{'move-welcome': childBoardDrawn}">
+  <div class="big-welcome">
+    Welcome to MineNG.Sweep!
+  </div>
+</div>

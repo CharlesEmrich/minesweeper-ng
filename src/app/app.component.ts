@@ -10,7 +10,11 @@ import { Board } from './board.model';
 export class AppComponent {
   gameState: boolean = null;
   masterBoard: Board;
+  boardDrawn: boolean = false;
+
   makeBoard(boardParams) {
+    //Reset Win/Loss
+    this.gameState = null;
     //Instantiate a new Board object.
     this.masterBoard = new Board(parseInt(boardParams.height), parseInt(boardParams.width), parseInt(boardParams.bombs));
 
@@ -23,9 +27,7 @@ export class AppComponent {
 
     //Place bombs on randomly picked squares.
     var currentBombs = 0;
-    //NOTE: This variable is only there to catch infinite loops. Remove from final version.
-    var loopCounter = 0;
-    while(this.masterBoard.bombs > currentBombs || loopCounter > 10000) {
+    while(this.masterBoard.bombs > currentBombs) {
       var xCoord = Math.floor(Math.random() * (this.masterBoard.width) + 1);
       var yCoord = Math.floor(Math.random() * (this.masterBoard.height) + 1);
 
@@ -39,9 +41,6 @@ export class AppComponent {
         this.masterBoard.bombedSquares.push(squareToBomb);
         currentBombs ++;
       }
-      loopCounter ++;
-      if(loopCounter > 10000) {console.log('Oh no.')}
-
     }
 
     //NOTE: Refactor populateAdjacents so that the function loops and the call here doesn't need to.
@@ -53,11 +52,14 @@ export class AppComponent {
     });
 
     console.log(this.masterBoard);
+    this.boardDrawn = true;
   }
-}
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  checkForBoard() {
+    if (this.boardDrawn === true) {
+      return 'board-drawn';
+    } else {
+      return '';
+    }
+  }
 }

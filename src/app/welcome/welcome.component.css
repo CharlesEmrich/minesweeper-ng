@@ -5,7 +5,6 @@
   padding: 8px;
   background-color: #4F94AF;
 
-  font-family: 'Oxygen Mono', monospace;
   font-size: 20px;
   color: #E8E9EA;
 }
@@ -25,7 +24,6 @@
   height: 20px;
   width: 60px;
   padding-bottom: 3px;
-  font-family: 'Oxygen Mono', monospace;
   font-size: 15px;
 }
 
@@ -36,7 +34,6 @@
   cursor: pointer;
 
   text-align: center;
-  font-family: 'Oxygen Mono', monospace;
   font-size: 35px;
   color: #E8E9EA;
   transition: all 0.3s ease-in-out;
@@ -45,4 +42,43 @@
 .button-like:hover {
   background-color: #89CBE5;
   color: #494946;
+}
+
+.welcome {
+  /*display: flex;
+  align-items: center;
+  justify-content: center;*/
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+
+  padding: 65px;
+  background-color: #494946;
+  color: #E8E9EA;
+  font-size: 80px;
+}
+
+.move-welcome {
+  animation-name: move;
+  animation-duration: 1.8s;
+  animation-timing-function: ease;
+  animation-delay: 0;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+@keyframes move {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  100% {
+    top: 200%;
+    left: 50%;
+  }
 }
