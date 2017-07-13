@@ -1,12 +1,12 @@
 import { Square } from './square.model';
 
 export class Board {
+  gameOver: boolean = false;
   squares: Square[] = [];
   bombedSquares: Square[] = [];
   unbombedSquares: Square[] = [];
   constructor(public height: number, public width: number, public bombs: number) {}
 
-  //NOTE: Make it so this can run on left clicks and passes if the only unclicked squares are the mines.
   checkForWin() {
     var allBombsFlagged: boolean = this.bombedSquares.every(square => { return square.flagged });
 

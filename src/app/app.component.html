@@ -1,2 +1,3 @@
 <app-welcome (boardParamSender)="makeBoard($event)"></app-welcome>
-<app-board *ngIf="masterBoard" [childBoard]="masterBoard"></app-board>
+<app-board *ngIf="masterBoard" [childBoard]="masterBoard" (winSender)="gameState = $event" (lossSender)="gameState = $event"></app-board>
+<app-game-state [childGameState]="gameState"></app-game-state>

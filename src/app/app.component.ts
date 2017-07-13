@@ -8,6 +8,7 @@ import { Board } from './board.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  gameState: boolean = null;
   masterBoard: Board;
   makeBoard(boardParams) {
     //Instantiate a new Board object.

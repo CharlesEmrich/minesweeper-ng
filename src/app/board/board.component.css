@@ -21,3 +21,11 @@
 .clicked {
   background-color: lightgrey;
 }
+
+.otherBombed {
+  background-color: lightblue;
+}
+
+.lethal {
+  background-color: red;
+}
