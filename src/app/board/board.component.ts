@@ -18,7 +18,7 @@ export class BoardComponent implements OnInit {
   }
 
   clickSquare(square: Square) {
-    if(!square.flagged) {
+    if(!square.flagged && !this.childBoard.gameOver) {
       square.clicked = true;
       //Lose game if bombed
       if(square.bombed) {
@@ -46,7 +46,7 @@ export class BoardComponent implements OnInit {
   }
 
   markBomb(square: Square): boolean {
-    if(!square.clicked) {
+    if(!square.clicked && !this.childBoard.gameOver) {
       //Mark guess
       square.flagged = !square.flagged;
       //Check for Win
