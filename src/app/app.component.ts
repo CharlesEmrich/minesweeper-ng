@@ -18,11 +18,12 @@ export class AppComponent {
       }
     }
 
-    //NOTE: SOMETHING IS WRONG WITH THIS AND IT DOESN'T MAKE ENOUGH BOMBS
     var currentBombs = 0;
-    while(this.masterBoard.bombs > currentBombs) {
-      var xCoord = Math.floor(Math.random() * (this.masterBoard.width - 1));
-      var yCoord = Math.floor(Math.random() * (this.masterBoard.height - 1));
+    //NOTE: This variable is only there to catch infinite loops. Remove from final version.
+    var loopCounter = 0;
+    while(this.masterBoard.bombs > currentBombs || loopCounter > 10000) {
+      var xCoord = Math.floor(Math.random() * (this.masterBoard.width) + 1);
+      var yCoord = Math.floor(Math.random() * (this.masterBoard.height) + 1);
 
       var squareToBomb = this.masterBoard.squares.find((currentSquare: Square) => {
         return currentSquare.y === yCoord && currentSquare.x === xCoord;
@@ -32,6 +33,8 @@ export class AppComponent {
         squareToBomb.bomb = true;
         currentBombs ++;
       }
+      loopCounter ++;
+      if(loopCounter > 10000) {console.log('Oh no.')}
     }
 
     this.masterBoard.squares.forEach((square) => { this.masterBoard.populateAdjacents(square)});
