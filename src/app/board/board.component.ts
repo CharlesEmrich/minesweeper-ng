@@ -25,9 +25,10 @@ export class BoardComponent implements OnInit {
     //Mark Guess
     square.flag = !square.flag;
 
-    console.log(square);
+    //Check for Win
+    console.log(this.childBoard.checkForWin());
+    this.childBoard.checkForWin();
+    // console.log(square);
     return false;
   }
-
-
 }

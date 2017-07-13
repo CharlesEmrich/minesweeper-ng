@@ -5,6 +5,19 @@ export class Board {
   bombedSquares: Square[] = [];
   constructor(public height: number, public width: number, public bombs: number) {}
 
+  //NOTE: Make it so this can run on left clicks and passes if the only unclicked squares are the mines.
+  checkForWin() {
+    var allBombsFlagged: boolean = this.bombedSquares.every(square => { return square.flag });
+
+    var flaggedSquares: number = 0
+    this.bombedSquares.forEach(square => {
+      if (square.flag) {
+        flaggedSquares ++;
+      }
+    });
+    return allBombsFlagged && flaggedSquares === this.bombs;
+  }
+
   populateAdjacents(square: Square) {
     var possibleAdjacentCoords = [[square.x - 1, square.y],
                                   [square.x + 1, square.y],
